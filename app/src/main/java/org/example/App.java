@@ -8,6 +8,7 @@ public class App {
     ToDoList list = new ToDoList();
     boolean running = true;
     System.out.println("Welcome to your To-Do List!");
+    // Display menu and handle user input until user exits
     while(running){
       System.out.println("\nMenu:");
       System.out.println("1. Add task");
@@ -29,6 +30,7 @@ public class App {
         case 1:
           System.out.print("Enter task description: ");
           String desc = scanner.nextLine();
+          // If addTask returns false, it means the description was invalid
           if(!list.addTask(desc)){
             System.out.println("Invalid description.");
           }
@@ -38,6 +40,7 @@ public class App {
           break;
         case 2:
           System.out.print("Enter task number: ");
+          // If the input is not an integer, it's invalid
           if(!scanner.hasNextInt()){
             System.out.println("Invalid number.");
             scanner.next();
@@ -45,6 +48,7 @@ public class App {
           }
           int index = scanner.nextInt();
           scanner.nextLine();
+          // If markTaskComplete returns false, it means the index was invalid
           if(!list.markTaskComplete(index)){
             System.out.println("Invalid index.");
           }
@@ -54,12 +58,14 @@ public class App {
           break;
         case 3:
           System.out.println("Incomplete tasks:");
+          // Loop through incomplete tasks and print them
           for(Task t : list.getIncompleteTasks()){
             System.out.println(t);
           }
           break;
         case 4:
           System.out.println("Complete tasks:");
+          // Loop through complete tasks and print them
           for(Task t : list.getCompleteTasks()){
             System.out.println(t);
           }
@@ -67,6 +73,7 @@ public class App {
         case 5:
           System.out.println("All tasks:");
           int i = 0;
+          // Loop through all tasks and print them with their index
           for (Task t : list.getAllTasks()) {
             System.out.println(i + ": " + t);
             i++;
