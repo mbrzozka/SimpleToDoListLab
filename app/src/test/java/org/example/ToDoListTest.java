@@ -11,6 +11,7 @@ public class ToDoListTest {
     ToDoList list = new ToDoList();
     assertTrue(list.addTask("Study"));
     assertFalse(list.addTask(""));
+    assertFalse(list.addTask("   "));
     assertFalse(list.addTask(null));
   }
 

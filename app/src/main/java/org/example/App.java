@@ -30,9 +30,13 @@ public class App {
         case 1:
           System.out.print("Enter task description: ");
           String desc = scanner.nextLine();
+          if(desc.trim().isEmpty()){
+            System.out.println("Error: Task description cannot be blank.");
+            break;
+          }
           // If addTask returns false, it means the description was invalid
           if(!list.addTask(desc)){
-            System.out.println("Invalid description.");
+            System.out.println("Error: Invalid task description.");
           }
           else{
             System.out.println("Task added.");
